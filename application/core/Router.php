@@ -15,6 +15,7 @@ class Router {
         foreach ($arr as $key=>$val){
             $this->add($key,$val);// из файла routes.php отправляем все роуты в метод add
         }
+
     }
 
     public function add($route,$params){
@@ -48,17 +49,17 @@ class Router {
                 $controller = new $path($this->params);
                 $controller->$action();
             }else{
-//                echo "ОШИБКА: метод не найден ".$action;
-                View::errorCode(404);
+                echo "ОШИБКА: метод не найден ".$action;
+//                View::errorCode(404);
             }
         }else{
-//            echo "ОШИБКА: контроллер не найден ".$path;
-            View::errorCode(404);
+            echo "ОШИБКА: контроллер не найден ".$path;
+//            View::errorCode(404);
         }
 
     }else{
-//        echo "маршрут не найден";
-        View::errorCode(404);
+        echo "маршрут ".$_SERVER['REQUEST_URI']." не найден";
+//        View::errorCode(404);
     }
     }
 

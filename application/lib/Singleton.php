@@ -10,12 +10,12 @@ class Singleton{
     }
 
     protected function __clone(){
-        //запрет на кланирование
+        //
     }
 
     public function __wakeup()
     {
-        throw new \Exception("нельзя десереализировать класс Одинчку");
+        throw new \Exception("you can't do this");
     }
 
     public static function getInstanse(){

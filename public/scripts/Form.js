@@ -1,24 +1,39 @@
 $(document).ready(function() {
-    $('form').submit(function (e) {
-        var json;
-        e.preventDefault();
-        $.ajax({
-            type: $(this).attr('method'),
-            url: $(this).attr('action'),
-            data: new FormData(this),
-            contentType: false,
-            cache: false,
-            processData: false,
-            success: function (data) {
-                document.write(data);
-                // json = $.parseJSON(data);
-                // if (json.url){
-                //     window.location.href = json.url;
-                // }else{
-                //     alert('ссылка не найдена');
-                // }
-            }
-        });
+    $("#next").click(
+        function(){
 
-    });
+                if(validation() == true){
+                    data = $("#id_form_1").serialize();
+                    $.post('/main/register',data , function(data) {
+                        $('#part1').hide();
+                        $('#email_2').val($('#email_1').val());
+                        $('#part2').show();
+                    });
+                }//else{alert(validation()); }
+        }
+    );
 });
+
+function validation() {
+     check = true;
+
+     if(!($.isNumeric($("#phone").val()))){
+         $("#phone").addClass("empty-class");
+         check = false;
+     }else{$("#phone").removeClass("empty-class");}
+    $('#phone').on('', function() {
+        alert('change');
+        $(this).val($(this).val().replace(/[A-Za-zА-Яа-яЁё]/, ''))
+    });
+     $("#id_form_1").find ("input, select").each(function() {
+
+        if($(this).val() == '' || $(this).val() == 0)
+        {
+            $(this).addClass("empty-class");
+            check = false;
+        }else{
+            $(this).removeClass("empty-class");
+        }
+    });
+    return check;
+}

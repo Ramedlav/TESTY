@@ -3,37 +3,33 @@ return[
     '' => [
         'controller' => 'main',
         'action' => 'index',
-        'title' => 'Главная страница',
+        'title' => 'HOME',
+        'message'=> 'Check out this Meet-up with SoCal AngularJS!',
+        'link' => ((!empty($_SERVER['HTTPS'])) ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'] . "allmembers/show",
     ],
 
-    'account/login' => [
-        'controller' => 'account',
-        'action' => 'login',
-        'title' => 'Вход',
-    ],
-
-    'account/register' => [
-        'controller' => 'account',
-        'action' => 'register',
-        'title' => 'Регистрация',
-    ],
-
-    'support/show' => [
-    'controller' => 'support',
+    'allmembers/show' => [
+        'controller' => 'allmembers',
         'action' => 'show',
-        'title' => 'Поддержка',
+        'title' => 'All members',
     ],
 
-    'support/send' => [
-        'controller' => 'support',
-        'action' => 'send',
-        'title' => 'Поддержка',
+    'main/register' =>[
+        'controller' => 'main',
+        'action' => 'register',
+        'title' => 'Add members',
     ],
 
-    'wether/wether' => [
-        'controller' => 'wether',
-        'action' => 'wether',
-        'title' => 'Погода сегодня',
+    'main/register_next' =>[
+        'controller' => 'main',
+        'action' => 'register_next',
+        'title' => 'Add members',
+    ],
+
+    'main/register_img' =>[
+        'controller' => 'main',
+        'action' => 'register_next',
+        'title' => 'Add members',
     ],
 
 ];

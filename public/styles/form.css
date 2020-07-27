@@ -42,3 +42,9 @@ body {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
 }
+.empty-class{
+    border-color: red;
+    z-index: 5;
+    /*background: red;*/
+    /*display:none;*/
+}

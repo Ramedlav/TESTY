@@ -21,17 +21,20 @@ class Db extends Singleton {
     }
 
     public function query($sql){
-//        debug($sql);
+
         $sqli = explode(' ',$sql);//получаем первое слово зпроса для проверки
 
 
         if( ! $query = $this->link->query($sql) ) {
             die(var_export($this->link->errorinfo(), TRUE));
         }
+
         if($sqli[0] == "SELECT") {// такая странная проверка нужна что-бы отличать
-                                    //будет ли ответ от запроса пустой или нет
-                                    //решил что лучше сделать проверку, чем отдельный метод
+            //будет ли ответ от запроса пустой или нет
+            //решил что лучше сделать проверку, чем отдельный метод
+
             $result = $query->fetchAll(PDO::FETCH_ASSOC);
+
         }
         if(isset($result)){
             return $result;
